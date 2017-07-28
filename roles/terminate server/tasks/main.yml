@@ -1,0 +1,8 @@
+---
+
+- action: ec2_facts
+- name: terminate the instance
+  ec2:
+    state: 'absent'
+    region: '{{ server_region }}'
+    instance_ids: "{{ ansible_ec2_instance_id }}"

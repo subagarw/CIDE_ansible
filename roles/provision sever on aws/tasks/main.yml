@@ -1,0 +1,59 @@
+---
+
+- tasks:
+  - name: Create Security group
+    ec2_group:
+      state: present
+      name: "{{ server_security_group }}"
+      description: "{{ server_security_group_description }}"
+      region: "{{ server_region }}"
+      rules:
+        - proto: tcp
+          from_port: 22
+          to_port: 22
+          cidr_ip: 0.0.0.0/0
+        - proto: tcp
+          from_port: 80
+          to_port: 80
+          cidr_ip: 0.0.0.0/0
+        - proto: tcp
+          from_port: 8080
+          to_port: 8080
+          cidr_ip: 0.0.0.0/0
+      rules_egress:
+        - proto: all
+          cidr_ip: 0.0.0.0/0
+    register: firewall
+    
+  - name: create key pair
+    ec2_key:
+      name: "{{ server_key_name }}"
+      region: "{{ server_region }}"
+    register: ec2_key
+    
+  - name: save private key
+    copy: content="{{ ec2_key.key.private_key }}" dest="{{ server_key_path }}{{server_key_name}}.pem" mode=0600
+    when: ec2_key.changed
+    
+  - name: create server
+    ec2:
+      instance_type: {{ server_instance_type }}
+      image: {{ server_image }}
+      wait: true
+      region: {{ server_region }}
+      keypair: {{ server_key_name }}
+      count: {{ server_count }}
+      group: {{ server_security_group }}
+    register: ec2
+    
+  - name: Add tag to server
+    ec2_tag:
+      resource: {{ item.id }}
+      region: {{ server_region }}
+      state: present
+    with_items: "{{ ec2.instances }}"
+    args:
+      tags:
+        Name: {{ server_name }}
+        
+    

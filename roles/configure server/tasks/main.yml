@@ -1,0 +1,45 @@
+---
+
+- name: add repo for java 8
+  apt_repository: repo='ppa:webupd8team/java' state=present
+  
+- name: accept license agreement
+  debconf: name='oracle-java8-installer' question='shared/accepted-oracle-license-v1-1' value='true' vtype='select'
+  
+- name: install java 8
+  apt: name=oracle-java8-installer state=latest update-cache=yes force=yes
+  
+- name: remove maven2
+  apt:
+    name: maven
+    state: absent
+    
+- name: add maven3 repo
+  apt_repository: repo='ppa:andrei-pozolotin/maven3' state=present
+  
+- name: install maven3
+  apt: name=maven3 state=latest update-cache=yes force=yes
+  
+- name: create directory
+  file:
+    path=/artifact
+    state=directory
+    owner=root
+    group=root
+    mode=0777
+    
+- name: Redirect
+  iptables:
+    table: nat
+    chain: PREROUTING
+    in_interface: eth0
+    protocol: tcp
+    match: tcp
+    destination_port: 80
+    jump: REDIRECT
+    to_ports: {{ port }}
+    comment: Redirect port 80 to {{ port }}
+      
+
+   
+   
