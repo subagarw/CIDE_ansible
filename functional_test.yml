@@ -1,6 +1,6 @@
 ---
   
-- hosts: tag_Name_{{ name }}
+- hosts: tag_Name_{{ servername }}
   sudo: yes
   roles:
     - { role: configure server, portnumber: "{{ portnumber }}" }
