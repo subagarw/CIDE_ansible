@@ -10,6 +10,6 @@
 - hosts: tag_Name_{{ name }}
 
   roles:
-    - { role: configure server, port: {{ port }} }
-    - { role: perform functional test, artifact_path: {{ artifact_path }}, app_name: {{ app_name }}, functional_test_repo: {{ functional_test_repo }}, funtional_test_report_path: {{ funtional_test_report_path }} }
+    - { role: configure server, port: "{{ port }}" }
+    - { role: perform functional test, artifact_path: "{{ artifact_path }}", app_name: "{{ app_name }}", functional_test_repo: "{{ functional_test_repo }}", funtional_test_report_path: "{{ funtional_test_report_path }}" }
     - { role: terminate server, server_region: {{ region }} }
