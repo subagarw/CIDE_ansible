@@ -1,4 +1,9 @@
 ---
+
+- name: get the value
+  debug:
+    var: serverexist
+
 - name: Create Security group
   ec2_group:
     state: present
