@@ -62,5 +62,5 @@
 - name: get test results
   fetch: 
     src: /avivaTest/target/surefire-reports/testng-results.xml
-    dest: {{ funtional_test_report_path }}
+    dest: "{{ funtional_test_report_path }}"
     flat: yes
