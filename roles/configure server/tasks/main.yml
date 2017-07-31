@@ -37,8 +37,8 @@
     match: tcp
     destination_port: 80
     jump: REDIRECT
-    to_ports: "{{ port }}"
-    comment: Redirect port 80 to {{ port }}
+    to_ports: "{{ portnumber }}"
+    comment: Redirect port 80 to {{ portnumber }}
       
 
    
