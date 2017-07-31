@@ -1,5 +1,4 @@
 ---
-
 - tasks:
   - name: Gather facts
     ec2_remote_facts:
