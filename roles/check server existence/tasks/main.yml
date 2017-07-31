@@ -12,7 +12,7 @@
     set_facts:
       serverexists: yes
     when: info.instances[0] is defined
-    
+
   - name: returning status if the server does not exist
     set_facts:
       serverexists: no
