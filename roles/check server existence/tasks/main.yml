@@ -17,3 +17,8 @@
   set_fact:
     serverexists: yes
   when: info.instances[0] is defined
+  
+- name: display fact
+  debug:
+    var: serverexists
+  
