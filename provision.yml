@@ -4,5 +4,5 @@
 
   roles:
     - { role: check server existence, server_region: "{{ region }}", server_name: "{{ name }}" }
-    - { role: provision sever on aws, server_region: "{{ region }}", server_security_group: "{{ security_group }}", server_key_name: "{{ key_name }}", server_key_path: "{{ key_path }}", server_instance_type: "{{ instance_type }}", server_image: "{{ image }}", server_count: "{{ count }}", server_name: "{{ name }}", server_security_group_description: "{{ security_group_description }}", when: "{{ serverexists }} == 'no'" }
+    - { role: provision sever on aws, server_region: "{{ region }}", server_security_group: "{{ security_group }}", server_key_name: "{{ key_name }}", server_key_path: "{{ key_path }}", server_instance_type: "{{ instance_type }}", server_image: "{{ image }}", server_count: "{{ count }}", server_name: "{{ name }}", server_security_group_description: "{{ security_group_description }}", when: "serverexists == no" }
 
