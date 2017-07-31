@@ -12,3 +12,8 @@
   set_fact:
     serverexists: no
   when: info.instances[0] is not defined
+  
+- name: setfact
+  set_fact:
+    serverexists: yes
+  when: info.instances[0] is defined
