@@ -1,13 +1,14 @@
 ---
+
 - tasks:
   - name: Gather facts
     ec2_remote_facts:
       region: "{{ server_region }}"
-      filters:
-        instance-state-name: running
-        "tag:name": "{{ server_name }}"
+        filters:
+          instance-state-name: running
+          "tag:name": "{{ server_name }}"
     register: info
-
+    
   - name: returning status if server exists
     set_facts:
       serverexists: yes
