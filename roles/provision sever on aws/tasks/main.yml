@@ -2,7 +2,7 @@
 
 - name: get the value
   debug:
-    var: serverexist
+    var: serverexists
 
 - name: Create Security group
   ec2_group:
