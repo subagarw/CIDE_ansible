@@ -7,7 +7,6 @@
         instance-state-name: running
         "tag:name": "{{ server_name }}"
     register: info
-    
 
   - name: returning status if server exists
     set_facts:
