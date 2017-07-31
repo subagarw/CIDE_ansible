@@ -1,6 +1,7 @@
 ---
 
 - hosts: localhost
+  sudo: yes
 
   roles:
     - { role: check server existence, server_region: "{{ region }}", server_name: "{{ name }}" }
