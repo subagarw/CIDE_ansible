@@ -7,3 +7,8 @@
       instance-state-name: running
       "tag:Name": "{{ server_name }}"
   register: info
+  
+- name: set fact
+  set_facts:
+    serverexists: no
+  when: info.instances[0] is not defined
