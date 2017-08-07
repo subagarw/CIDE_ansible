@@ -3,7 +3,7 @@
 - hosts: tag_Name_{{ sit_servername }}
   sudo: yes
   roles:
-    - { role: terminate server, server_region: "{{ region }}" }
+    - { role: terminate server, server_region: "{{ sit_region }}" }
 
 - hosts: tag_Name_{{ Prod_Server_Name }}
   sudo: yes
