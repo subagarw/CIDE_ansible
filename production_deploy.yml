@@ -5,7 +5,7 @@
   roles:
     - { role: terminate server, server_region: "{{ sit_region }}" }
 
-- hosts: tag_Name_{{ Prod_Server_Name }}
+- hosts: tag_Name_{{ servername }}
   sudo: yes
   roles:
     - { role: configure server, port: "{{ portnumber }}" }
