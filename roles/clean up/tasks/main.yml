@@ -1,4 +1,6 @@
 ---
+
+
 - name: delete key pair
   ec2-key:
     name: "{{ server_key_name }}"
@@ -10,7 +12,7 @@
     state: absent
 - name: delete security group
   ec2_group:
-    state: absent
     name: "{{ server_security_group }}"
     description: "{{ server_security_group_description }}"
     region: "{{ server_region }}"
+    state: absent
