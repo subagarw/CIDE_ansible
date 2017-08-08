@@ -1,0 +1,7 @@
+---
+
+- hosts: tag_Name_{{ servername }}
+  sudo: yes
+  roles:
+    - { role: terminate server, server_region: "{{ region }}" }
+    - { role: clean up, server_region: "{{ region }}", server_security_group: "{{ security_group }}", server_key_name: "{{ key_name }}", server_key_path: "{{ key_path }}", when: "cleanup == true"
