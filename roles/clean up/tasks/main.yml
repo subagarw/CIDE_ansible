@@ -1,7 +1,7 @@
 ---
 
 - name: delete key pair
-  ec2-key:
+  ec2_key:
     name: "{{ server_key_name }}"
     region: "{{ server_region }}"
     state: absent
