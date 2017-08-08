@@ -51,7 +51,7 @@
   
 - name: Wait for the instances to boot by checking the ssh port
   pause:
-    seconds: 30
+    seconds: 50
   
 - name: Add tag to server
   ec2_tag:
