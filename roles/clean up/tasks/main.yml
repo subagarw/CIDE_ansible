@@ -3,7 +3,7 @@
 - name: delete key pair
   ec2-key:
     name: "{{ server_key_name }}"
-    region: "{{ server_key_region }}"
+    region: "{{ server_region }}"
     state: absent
 - name: delete local pair
   file:
