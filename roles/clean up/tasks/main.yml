@@ -1,16 +1,13 @@
 ---
-
 - name: delete key pair
   ec2-key:
     name: "{{ server_key_name }}"
     region: "{{ server_key_region }}"
-    state: absent
-    
+    state: absent  
 - name: remove local key
   file:
     path: "{{ server_key_path }}{{ server_key_name }}.pem"
     state: absent
-    
 - name: delete security group
   ec2_group:
     state: absent
