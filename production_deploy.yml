@@ -1,10 +1,5 @@
 ---
 
-- hosts: tag_Name_{{ sit_servername }}
-  sudo: yes
-  roles:
-    - { role: terminate server, server_region: "{{ sit_region }}" }
-
 - hosts: tag_Name_{{ servername }}
   sudo: yes
   roles:
