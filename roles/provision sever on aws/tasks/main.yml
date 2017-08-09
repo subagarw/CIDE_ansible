@@ -49,6 +49,10 @@
     group: "{{ server_security_group }}"
   register: ec2
   
+- name: display ec2
+  debug:
+    var: ec2.instances[0]
+  
 - name: Wait until SSH is available
   local_action: 
     module: wait_for 
