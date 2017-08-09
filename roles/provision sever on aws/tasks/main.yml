@@ -51,7 +51,7 @@
   
 - name: display ec2
   debug:
-    var: ec2.instances[0]
+    var: ec2.instances[0].public_ip
   
 - name: Wait until SSH is available
   local_action: 
