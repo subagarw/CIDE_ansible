@@ -1,0 +1,6 @@
+---
+
+- hosts: tag_Name_{{ servername }}
+  sudo: yes
+  roles:
+    - { role: terminate server, server_region: "{{ region }}" }
