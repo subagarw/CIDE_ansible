@@ -1,5 +1,4 @@
 ---
-
 - hosts: tag_Name_{{ servername }}
   sudo: yes
   roles:
