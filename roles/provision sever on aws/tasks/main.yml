@@ -62,7 +62,7 @@
 - name: Creating ServerDetail File
   template:
     src: serverdetail.j2
-    dest: "{{ server_detail_path }}/{{ server_name }}"
+    dest: "{{ server_detail_path }}"
   with_items: "{{ ec2.instances }}"
 
 - name: Wait until SSH is available
