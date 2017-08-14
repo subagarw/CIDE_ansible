@@ -1,0 +1,17 @@
+SERVER_NAME {{ server_name }}
+SERVER_ID {{ item.id }}
+SERVER_TYPE {{ item.instance_type }}
+LAUNCH_TIMESTAMP {{ item.launch_time }} 
+
+REGION {{ item.region }}
+KEY_NAME {{ item.key_name }}
+
+PUBLIC_IP {{ item.public_ip }}
+PUBLIC_DNS_NAME {{ item.public_dns_name }}
+PRIVATE_IP {{ item.private_ip }}
+PRIVATE_DNS_NAME {{ item.private_dns_name }}
+
+SECURITY_GROUP_NAME {{ item.groups[1] }}
+SECURITY_GROUP_ID {{ item.groups[0] }}
+
+
