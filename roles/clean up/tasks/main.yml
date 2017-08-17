@@ -1,8 +1,5 @@
 ---
 
-- name: clean up value
-  debug:
-    var: cleanup
 - name: delete key pair
   ec2_key:
     name: "{{ server_key_name }}"
