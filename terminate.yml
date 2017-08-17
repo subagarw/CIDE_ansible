@@ -3,7 +3,4 @@
   sudo: yes
   roles:
     - { role: terminate server, server_region: "{{ region }}", instance_id: "{{ id }}" }
-- hosts: tag_Name_{{ servername }}
-  sudo: yes
-  roles:
     - { role: clean up , server_key_name: "{{ key_name }}", server_region: "{{ region }}", server_key_path: "{{ key_path }}", server_security_group: "{{ security_group }}", server_security_group_description: "{{ security_group_description}}", when: cleanup == "true" }
