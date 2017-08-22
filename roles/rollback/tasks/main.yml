@@ -1,0 +1,11 @@
+---
+
+- name: get process id for the running application
+    shell: |
+      id=`fuser 8080/tcp`
+      kill $id
+
+- name: remove artifact
+  file:
+    state: absent
+    path: "/artifact/aviva.war"
