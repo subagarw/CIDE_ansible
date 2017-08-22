@@ -3,5 +3,5 @@
 - hosts: tag_Name_{{ servername }}
   sudo: yes
   roles:
-    - rollback
+    - { role: rollback, port: "{{ portnumber }}" }
     - { role: run application, artifact_path: "{{ artifact_path }}", app_name: "{{ app_name }}" }
