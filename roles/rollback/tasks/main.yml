@@ -1,9 +1,9 @@
 ---
 
 - name: get process id for the running application
-    shell: |
-      id=`fuser {{ port }}/tcp`
-      kill $id
+  shell: |
+    id=`fuser {{ port }}/tcp`
+    kill $id
 
 - name: remove artifact
   file:
