@@ -58,8 +58,7 @@
   when: SCM == 'GitSCM'
   
 - name: Clone svn test repository
-  shell:
-    svn co {{ SVN_REPO }} --username {{ SVN_USERNAME }} --password {{ SVN_PASS }}
+  shell: svn co {{ functional_test_repo }} --username {{ SVN_USERNAME }} --password {{ SVN_PASS }}
   when: SCM == 'SubversionSCM'
     
 - name: resolving dependency for libfontconfig
