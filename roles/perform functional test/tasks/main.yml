@@ -13,11 +13,11 @@
     
 - name: Install git
   apt: name=git state=present
-  when: SCM == 'GitSCM'
+  when: TOOL == 'GitSCM'
   
 - name: Install svn
   apt: name=subversion state=present
-  when: SCM == 'SubversionSVN'
+  when: TOOL == 'SubversionSVN'
   
 - name: Create test directory
   file:
@@ -26,7 +26,7 @@
     owner=root
     group=root
     mode=0777
-  when: SCM == 'GitSCM'
+  when: TOOL == 'GitSCM'
 
 - name: Create directory for phantomJs
   file:
@@ -55,11 +55,11 @@
     clone=yes
     update=yes
     force=yes
-  when: SCM == 'GitSCM'
+  when: TOOL == 'GitSCM'
   
 - name: Clone svn test repository
-  shell: svn co {{ functional_test_repo }} --username {{ SVN_USERNAME }} --password {{ SVN_PASS }}
-  when: SCM == 'SubversionSCM'
+  shell: svn co {{ functional_test_repo }} --username {{ USERNAME }} --password {{ PASS }} --vault-password-file {{ vault }}
+  when: TOOL == 'SubversionSCM'
     
 - name: resolving dependency for libfontconfig
   apt: name=libfontconfig state=present
