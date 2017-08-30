@@ -4,4 +4,4 @@
   sudo: yes
   roles:
     - { role: configure server, portnumber: "{{ portnumber }}" }
-    - { role: perform functional test, artifact_path: "{{ artifact_path }}", app_name: "{{ app_name }}", functional_test_repo: "{{ functional_test_repo }}", funtional_test_report_path: "{{ funtional_test_report_path }}", TESTNAME: "{{ testreponame }}", TOOL: "{{ scmtool }}", USERNAME: "{{ username }}", PASS: "{{ pass }}", vault: "{{ vault }}" }
+    - { role: perform functional test, artifact_path: "{{ artifact_path }}", app_name: "{{ app_name }}", functional_test_repo: "{{ functional_test_repo }}", funtional_test_report_path: "{{ funtional_test_report_path }}", TESTNAME: "{{ testreponame }}", TOOL: "{{ scmtool }}", USERNAME: "{{ username }}", PASS: "{{ pass }}" }
