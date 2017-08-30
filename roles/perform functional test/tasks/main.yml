@@ -58,7 +58,7 @@
   when: TOOL == 'GitSCM'
   
 - name: Clone svn test repository
-  shell: svn co {{ functional_test_repo }} --username {{ USERNAME }} --password {{ PASS }} --vault-password-file {{ vault }}
+  shell: svn co {{ functional_test_repo }} --username {{ USERNAME }} --password {{ PASS }}
   when: TOOL == 'SubversionSCM'
     
 - name: resolving dependency for libfontconfig
