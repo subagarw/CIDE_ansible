@@ -13,14 +13,20 @@
     
 - name: Install git
   apt: name=git state=present
+  when: SCM == 'GitSCM'
   
+- name: Install svn
+  apt: name=subversion state=present
+  when: SCM == 'SubversionSVN'
+
 - name: Create test directory
   file:
-    path=/avivaTest
+    path=/{{ TESTNAME }}
     state=directory
     owner=root
     group=root
     mode=0777
+  when: SCM == 'GitSCM'
 
 - name: Create directory for phantomJs
   file:
@@ -45,10 +51,16 @@
 - name: Clone git test repository
   git:
     repo="{{ sit_test_repo }}"
-    dest=/avivaTest
+    dest=/{{ TESTNAME }}
     clone=yes
     update=yes
     force=yes
+  when: SCM == 'GitSCM'
+  
+- name: Clone svn test repository
+  shell:
+    svn co {{ sit_test_repo }} --username {{ SVN_USERNAME }} --password {{ SVN_PASS }}
+  when: SCM == 'SubversionSCM'
     
 - name: resolving dependency for libfontconfig
   apt: name=libfontconfig state=present
@@ -56,7 +68,7 @@
 - name: run test
   shell: mvn test
   args:
-    chdir: /avivaTest/
+    chdir: /{{ TESTNAME }}/
   ignore_errors: yes
     
 - name: get test results
