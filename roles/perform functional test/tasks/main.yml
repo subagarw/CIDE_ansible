@@ -10,14 +10,18 @@
     
 - name: run application
   shell: nohup java -jar /artifact/{{ app_name }} &
+
+- name: display var
+  debug:
+    var: TOOL
     
 - name: Install git
   apt: name=git state=present
-  when: {{ TOOL }} == 'GitSCM'
+  when: {{ TOOL }} == "GitSCM"
   
 - name: Install svn
   apt: name=subversion state=present
-  when: {{ TOOL }} == 'SubversionSVN'
+  when: TOOL == "SubversionSVN"
   
 - name: Create test directory
   file:
@@ -26,7 +30,7 @@
     owner=root
     group=root
     mode=0777
-  when: {{ TOOL }} == 'GitSCM'
+  when: TOOL == "GitSCM"
 
 - name: Create directory for phantomJs
   file:
@@ -55,7 +59,7 @@
     clone=yes
     update=yes
     force=yes
-  when: {{ TOOL }} == 'GitSCM'
+  when: TOOL == "GitSCM"
   
 - name: Clone svn test repository
   subversion: 
@@ -63,7 +67,7 @@
     dest: /{{ TESTNAME }}
     username: {{ USERNAME }}
     password: {{ PASS }} 
-  when: {{ TOOL }} == 'SubversionSCM'
+  when: TOOL == "SubversionSCM"
     
 - name: resolving dependency for libfontconfig
   apt: name=libfontconfig state=present
