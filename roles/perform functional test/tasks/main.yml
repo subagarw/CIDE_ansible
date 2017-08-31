@@ -63,10 +63,10 @@
   
 - name: Clone svn test repository
   subversion: 
-    repo: {{ functional_test_repo }}
+    repo: "{{ functional_test_repo }}"
     dest: /{{ TESTNAME }}
-    username: {{ USERNAME }}
-    password: {{ PASS }} 
+    username: "{{ USERNAME }}"
+    password: "{{ PASS }}" 
   when: TOOL == "SubversionSCM"
     
 - name: resolving dependency for libfontconfig
