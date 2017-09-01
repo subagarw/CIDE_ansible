@@ -59,7 +59,7 @@
     clone=yes
     update=yes
     force=yes
-  when: TOOL == 'GitSCM"
+  when: TOOL == 'GitSCM'
   
 - name: Clone svn test repository
   subversion: 
