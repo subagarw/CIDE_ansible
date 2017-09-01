@@ -23,9 +23,13 @@
   apt: name=git state=present
   when: scm == "GitSCM"
   
+- name: display var
+  debug:
+    msg: "scm var is {{ scm }}"
+  
 - name: Install svn
   apt: name=subversion state=present
-  when: scm | match("SubversionSVN")
+  when: scm | match(SubversionSVN)
   
 - name: Create test directory
   file:
