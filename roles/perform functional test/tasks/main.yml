@@ -15,13 +15,17 @@
   debug:
     msg: "tool var is {{ TOOL }}"
     
+- name: setup tool
+  set_fact:
+    scm: "{{ TOOL }}"
+    
 - name: Install git
   apt: name=git state=present
-  when: TOOL == "GitSCM"
+  when: scm == "GitSCM"
   
 - name: Install svn
   apt: name=subversion state=present
-  when: TOOL | match("SubversionSVN")
+  when: scm | match("SubversionSVN")
   
 - name: Create test directory
   file:
