@@ -29,7 +29,7 @@
   
 - name: Install svn
   apt: name=subversion state=present
-  when: scm | match(SubversionSVN)
+  when: scm | match('SubversionSVN')
   
 - name: Create test directory
   file:
