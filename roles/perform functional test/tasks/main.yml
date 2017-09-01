@@ -21,7 +21,7 @@
   
 - name: Install svn
   apt: name=subversion state=present
-  when: TOOL == "SubversionSVN"
+  when: "{{ TOOL }} == 'SubversionSVN'"
   
 - name: Create test directory
   file:
