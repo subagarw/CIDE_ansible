@@ -13,7 +13,7 @@
 
 - name: display var
   debug:
-    var: TOOL
+    msg: "tool var is {{ TOOL }}"
     
 - name: Install git
   apt: name=git state=present
