@@ -15,21 +15,13 @@
   debug:
     msg: "tool var is {{ TOOL }}"
     
-- name: setup tool
-  set_fact:
-    scm: "{{ TOOL }}"
-    
 - name: Install git
   apt: name=git state=present
-  when: scm == "GitSCM"
-  
-- name: display var
-  debug:
-    msg: "scm var is {{ scm }}"
+  when: TOOL == 'GitSCM'
   
 - name: Install svn
   apt: name=subversion state=present
-  when: scm | match('SubversionSVN')
+  when: TOOL == 'SubversionSCM'
   
 - name: Create test directory
   file:
@@ -38,7 +30,7 @@
     owner=root
     group=root
     mode=0777
-  when: "TOOL == GitSCM"
+  when: TOOL == 'GitSCM'
 
 - name: Create directory for phantomJs
   file:
@@ -67,7 +59,7 @@
     clone=yes
     update=yes
     force=yes
-  when: TOOL == "GitSCM"
+  when: TOOL == 'GitSCM"
   
 - name: Clone svn test repository
   subversion: 
@@ -75,7 +67,7 @@
     dest: /{{ TESTNAME }}
     username: "{{ USERNAME }}"
     password: "{{ PASS }}" 
-  when: TOOL == "SubversionSCM"
+  when: TOOL == 'SubversionSCM'
     
 - name: resolving dependency for libfontconfig
   apt: name=libfontconfig state=present
