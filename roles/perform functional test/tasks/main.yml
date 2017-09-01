@@ -21,7 +21,7 @@
   
 - name: Install svn
   apt: name=subversion state=present
-  when: "TOOL == \"SubversionSVN\""
+  when: "TOOL == SubversionSVN"
   
 - name: Create test directory
   file:
@@ -30,7 +30,7 @@
     owner=root
     group=root
     mode=0777
-  when: TOOL == "GitSCM"
+  when: "TOOL == GitSCM"
 
 - name: Create directory for phantomJs
   file:
