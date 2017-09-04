@@ -4,4 +4,4 @@
   sudo: yes
   roles:
     - { role: configure server, portnumber: "{{ portnumber }}" }
-    - { role: perform system integration test, artifact_path: "{{ artifact_path }}", app_name: "{{ app_name }}", sit_test_repo: "{{ sit_test_repo }}", Sit_test_report_path: "{{ Sit_test_report_path }}" }
+    - { role: perform system integration test, artifact_path: "{{ artifact_path }}", app_name: "{{ app_name }}", sit_test_repo: "{{ sit_test_repo }}", Sit_test_report_path: "{{ Sit_test_report_path }}", TESTNAME: "{{ testreponame }}", TOOL: "{{ scmtool }}", USERNAME: "{{ username }}", PASS: "{{ pass }}" } }
