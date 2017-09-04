@@ -10,6 +10,14 @@
     
 - name: run application
   shell: nohup java -jar /artifact/{{ app_name }} &
+  
+- name: display var
+  debug:
+    msg: "tool var is {{ TOOL }}"
+
+- name: update machine
+  apt:
+    update_cache: yes
     
 - name: Install git
   apt: name=git state=present
@@ -17,7 +25,7 @@
   
 - name: Install svn
   apt: name=subversion state=present
-  when: TOOL == 'SubversionSVN'
+  when: TOOL == 'SubversionSCM'
 
 - name: Create test directory
   file:
@@ -58,7 +66,11 @@
   when: TOOL == 'GitSCM'
   
 - name: Clone svn test repository
-  shell: svn co {{ sit_test_repo }} --username {{ USERNAME }} --password {{ PASS }} --vault-password-file {{ vault }}
+  subversion: 
+    repo: "{{ functional_test_repo }}"
+    dest: /{{ TESTNAME }}
+    username: "{{ USERNAME }}"
+    password: "{{ PASS }}" 
   when: TOOL == 'SubversionSCM'
     
 - name: resolving dependency for libfontconfig
