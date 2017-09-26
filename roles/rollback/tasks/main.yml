@@ -1,7 +1,13 @@
 ---
 
 - name: get process id for the running application
-  shell: kill -9 $(lsof -i:{{ port }} -t)
+  shell: lsof -t -i:{{PORT}}
+  ignore_errors: yes
+  register: pid
+  
+- name: kill the application
+  shell: kill {{pid.stdout}}  
+  when: pid.stdout != ""
 
 - name: remove artifact
   file:
