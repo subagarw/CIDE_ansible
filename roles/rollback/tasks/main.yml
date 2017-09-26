@@ -1,7 +1,7 @@
 ---
 
 - name: get process id for the running application
-  shell: lsof -t -i:{{PORT}}
+  shell: lsof -t -i:{{port}}
   ignore_errors: yes
   register: pid
   
