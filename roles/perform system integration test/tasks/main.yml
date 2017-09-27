@@ -7,6 +7,7 @@
     owner=root
     group=root
     mode=0777
+  when: machine == 'Aws'
     
 - name: run application
   shell: nohup java -jar /artifact/{{ app_name }} &
