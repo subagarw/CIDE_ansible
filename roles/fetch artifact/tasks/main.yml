@@ -1,6 +1,13 @@
 ---
+- name: create directory
+  file:
+    path=/artifact
+    state=directory
+    owner=root
+    group=root
+    mode=0777
 
 - name: download the artifact
   get_url:
     url: http://{{ nexusurl }}/service/local/artifact/maven/redirect?r={{ repo }}&g={{ groupid }}&a={{ artifactid }}&v={{ version }}&p={{ artifacttype }}
-    dest: {{ path }}
+    dest: /artifact/{{ appname }}

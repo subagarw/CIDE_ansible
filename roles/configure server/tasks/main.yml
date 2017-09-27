@@ -27,6 +27,7 @@
     owner=root
     group=root
     mode=0777
+  when: machine == 'Aws' 
     
 - name: Redirect
   iptables:
