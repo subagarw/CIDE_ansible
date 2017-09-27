@@ -1,0 +1,6 @@
+---
+
+- hosts: tag_Name_{{ servername }}
+  sudo: yes
+  roles:
+    - { role: fetch artifact, nexusurl: "{{ nexusurl }}", repo: "{{ repo }}", groupid: "{{ groupid }}", arifactid: "{{ artifactid }}", version: "{{ version }}", artifacttype: "{{ artifacttype }}", path: "{{ path }}" }

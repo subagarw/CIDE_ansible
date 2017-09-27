@@ -1,0 +1,6 @@
+---
+
+- name: download the artifact
+  get_url:
+    url: http://{{ nexusurl }}/service/local/artifact/maven/redirect?r={{ repo }}&g={{ groupid }}&a={{ artifactid }}&v={{ version }}&p={{ artifacttype }}
+    dest: {{ path }}
