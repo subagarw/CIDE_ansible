@@ -4,4 +4,4 @@
   sudo: yes
   roles:
     - { role: rollback, port: "{{ portnumber }}" }
-    - { role: run application, artifact_path: "{{ artifact_path }}", app_name: "{{ app_name }}" }
+    - { role: run application, artifact_path: "{{ artifact_path }}", app_name: "{{ app_name }}", machine: "{{ machine }}" }
