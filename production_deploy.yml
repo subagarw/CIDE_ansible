@@ -3,5 +3,5 @@
 - hosts: tag_Name_{{ servername }}
   sudo: yes
   roles:
-    - { role: configure server, port: "{{ portnumber }}", machine: "{{ machine }}" }
+    - { role: configure server, port: "{{ portnumber }}", machine: "{{ machine }}", when: "machine == Aws" }
     - { role: run application, artifact_path: "{{ artifact_path }}", app_name: "{{ app_name }}", machine: "{{ machine }}" }
